@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.blend1
+marketing/higgsedit-*/
+marketing/frames/
+*.log
+.DS_Store

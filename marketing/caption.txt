@@ -1,0 +1,29 @@
+This manual takes itself apart. ☕
+
+I turned a fictional espresso machine into a product manual you can talk to.
+
+“Take it apart.”
+The housing opens and the internal assemblies separate.
+
+“How does the water move?”
+An animated path connects the reservoir, pump, heater and brew group.
+
+“Just show me the pump.”
+The rest of the machine fades back.
+
+“Remove the pump first.”
+Blocked. The model shows which parts need to come off first.
+
+Built with Higgsfield 3D Jutsu, Blender, Three.js and Anime.js. The free starter includes the interactive app, editable model, assembly rules and setup guide. Prepared commands work without API keys; a live language interpreter is optional.
+
+This is a conceptual assembly with prepared internals and authored dependencies. It is not a scan of a real machine, a physics simulation or a repair manual.
+
+Imagine this for product onboarding, training or interactive demonstrations.
+
+👇 Comment “CODE” to get the link.
+
+3D LAB // 005 — Inside the Shot
+AI Concept Lab
+Testing AI ideas to find what’s worth building.
+
+#AIConceptLab #Higgsfield #Blender3D #ThreeJS #Interactive3D #ProductDesign #BuildInPublic #AI

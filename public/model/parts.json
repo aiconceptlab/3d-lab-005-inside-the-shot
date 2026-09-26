@@ -1,0 +1,183 @@
+[
+  {
+    "id": "chassis",
+    "label": "Anchored chassis",
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "requires": [],
+    "description": "The fixed base supports the prepared assembly. It stays anchored during the demonstration."
+  },
+  {
+    "id": "fasteners",
+    "label": "Housing fasteners",
+    "offset": [
+      0,
+      0.3,
+      0
+    ],
+    "requires": [],
+    "description": "Four illustrative housing screws. The dependency graph requires these to be released before the panels."
+  },
+  {
+    "id": "shell_left",
+    "label": "Left enclosure",
+    "offset": [
+      -0.29,
+      0.045,
+      0
+    ],
+    "requires": [
+      "fasteners"
+    ],
+    "description": "Graphite side panel. Opens access to the reservoir and pump in this concept."
+  },
+  {
+    "id": "shell_right",
+    "label": "Right enclosure",
+    "offset": [
+      0.31,
+      0.045,
+      -0.04
+    ],
+    "requires": [
+      "fasteners"
+    ],
+    "description": "Right panel and rear enclosure protect the internal assemblies."
+  },
+  {
+    "id": "top",
+    "label": "Top & control fascia",
+    "offset": [
+      0,
+      0.29,
+      -0.28
+    ],
+    "requires": [
+      "fasteners"
+    ],
+    "description": "The aluminium lid, front shield and upper fascia lift away together as a simplified assembly."
+  },
+  {
+    "id": "reservoir",
+    "label": "Water reservoir",
+    "offset": [
+      -0.17,
+      0.16,
+      -0.17
+    ],
+    "requires": [
+      "shell_left",
+      "top"
+    ],
+    "description": "Stores the water supply. Its translucent-blue appearance is stylized; it is not a measured capacity."
+  },
+  {
+    "id": "pump",
+    "label": "Pressure pump",
+    "offset": [
+      -0.25,
+      0.045,
+      0.12
+    ],
+    "requires": [
+      "shell_left",
+      "plumbing"
+    ],
+    "description": "The pump moves water from the reservoir towards the heating assembly. No pressure rating is claimed."
+  },
+  {
+    "id": "boiler",
+    "label": "Heating assembly",
+    "offset": [
+      0.19,
+      0.17,
+      -0.045
+    ],
+    "requires": [
+      "shell_right",
+      "top",
+      "plumbing"
+    ],
+    "description": "Copper heating body warms the water before it reaches the brew group. Temperature is not simulated."
+  },
+  {
+    "id": "plumbing",
+    "label": "Water lines",
+    "offset": [
+      0.02,
+      0.105,
+      -0.04
+    ],
+    "requires": [
+      "shell_left",
+      "shell_right"
+    ],
+    "description": "Prepared copper tubing connects the conceptual components. The highlighted route explains the sequence, not fluid physics."
+  },
+  {
+    "id": "controller",
+    "label": "Control module",
+    "offset": [
+      0.32,
+      0.17,
+      -0.12
+    ],
+    "requires": [
+      "shell_right"
+    ],
+    "description": "A representative low-voltage control board. Components and wiring are illustrative."
+  },
+  {
+    "id": "brew_group",
+    "label": "Brew group",
+    "offset": [
+      0,
+      0.025,
+      0.16
+    ],
+    "requires": [
+      "top",
+      "plumbing",
+      "portafilter"
+    ],
+    "description": "Routes heated water through the coffee basket. This is an educational assembly, not service guidance."
+  },
+  {
+    "id": "portafilter",
+    "label": "Portafilter",
+    "offset": [
+      0,
+      -0.025,
+      0.18
+    ],
+    "requires": [],
+    "description": "The removable basket and walnut handle sit below the brew group."
+  },
+  {
+    "id": "tray",
+    "label": "Drip tray",
+    "offset": [
+      0,
+      0,
+      0.21
+    ],
+    "requires": [],
+    "description": "Removable grate and tray beneath the brew area."
+  },
+  {
+    "id": "gauge",
+    "label": "Pressure dial",
+    "offset": [
+      -0.1,
+      0.13,
+      0.16
+    ],
+    "requires": [
+      "top"
+    ],
+    "description": "A decorative pressure dial gives the concept a familiar interface; its needle is not a sensor reading."
+  }
+]
