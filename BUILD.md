@@ -41,5 +41,6 @@ To change the object, edit the semantic `group(...)` definitions and child geome
 - [Three.js RoomEnvironment](https://threejs.org/docs/pages/RoomEnvironment.html)
 - [Anime.js animation](https://animejs.com/documentation/animation/)
 - [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs)
+- [GPT-5.4 mini model](https://developers.openai.com/api/docs/models/gpt-5.4-mini): optional API model example; access depends on your account
 
 Dependencies are pinned in `package-lock.json`. Platform availability and usage charges depend on the connected account.

@@ -6,6 +6,8 @@ Copy `caption.txt`. The final slide asks viewers to comment **CODE** for the lin
 
 The reel files are `inside-the-shot-reel-9x16.mp4` (1080 × 1920) and `inside-the-shot-reel-4x5.mp4` (1080 × 1350). Use 9:16 for full-screen Reels. Choose the 4:5 version if publishing as a portrait feed video. Titles remain in safe areas. All machine visuals come from the included original Blender geometry. No third-party music is included; add a licensed track in Instagram if desired.
 
+`reel-preview-9x16.png` and `reel-preview-4x5.png` can also be used as matching reel covers. The videos are 27 seconds at 30 fps, H.264 / yuv420p, with fast-start MP4 metadata.
+
 ## Reproduction
 
 1. Rebuild stills using `BUILD.md`.

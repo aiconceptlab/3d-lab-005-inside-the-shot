@@ -26,6 +26,8 @@ Open **http://127.0.0.1:3018**. The included model and prepared command mode nee
 
 Drag to orbit, scroll to zoom, click geometry or use the fourteen keyboard-accessible part buttons. Reduced-motion preferences shorten transitions and stop moving flow markers.
 
+![Actual interactive app](marketing/app-desktop.png)
+
 ## Optional live language mode
 
 Copy `.env.example` to `.env`, set `OPENAI_API_KEY` and an available `OPENAI_MODEL`, then restart `npm start`. Enable **Use live language interpretation** in the app. The model maps language to a bounded action and part ID using the Responses API and a strict JSON schema. The same local engine validates the command and enforces dependencies; the model cannot run JavaScript or edit geometry. Knowledge text comes from the prepared catalogue, not an unrestricted generated maintenance answer.
@@ -56,5 +58,7 @@ npm audit --registry=https://registry.npmjs.org
 ```
 
 See [QA notes](docs/QA.md) for the checks actually performed and the boundary of live API testing.
+
+The primary frontend bundle is approximately 180 KB gzipped, including Three.js; Vite reports a size advisory for the uncompressed 694 KB bundle. This POC intentionally keeps the viewer in one bundle.
 
 MIT-licensed code and original model. Third-party libraries and platform names retain their own licences and trademarks.

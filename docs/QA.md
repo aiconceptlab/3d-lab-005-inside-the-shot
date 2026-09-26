@@ -10,7 +10,17 @@
 
 ## Visual and integration checks
 
-Blender renders, desktop/mobile browser behaviour, carousel exports and final reel frames are checked before release. The marketing package uses actual rendered geometry, not unrelated concept images. Carousel dimensions are exactly 1080 × 1350.
+Verified on 26 September 2026:
+
+- Desktop browser: explode, water path, focused pump view, reset and successful part removal after prerequisites.
+- Phone viewport: 390 × 844 override, with 375 CSS pixels of content after the scrollbar; document width equals scroll width, with no horizontal overflow. Completed the five-step pump-removal sequence through the UI. Screenshot included in `marketing/app-mobile.png`.
+- Corrected a canvas intrinsic-size feedback issue on viewport changes and used the supported Three.js PCF shadow-map mode.
+- Blender assembled/exploded renders and the actual 3D Jutsu revision 2 preview inspected. Cloud rest/peak/final translations checked against the part manifest. The small cloud preview uses eight samples; production marketing renders use local Blender at higher resolution.
+- Five carousel PNGs at exactly 1080 × 1350, visually reviewed as a set. Cover branding and final CTA remain inside the canvas.
+- Native Higgsedit title/layout previews reviewed at both 1080 × 1920 and 1080 × 1350. Final 27-second exports are inspected and decoded before packaging.
+- GitHub Actions passes Node tests, production build and dependency audit. Gitleaks reports no secrets in the published history.
+
+The marketing package uses actual rendered geometry, not unrelated concept images. No Instagram post or DM is sent by this project.
 
 The optional OpenAI interpreter is tested with HTTP fixtures, including invalid responses. A paid live OpenAI request is not part of these checks; account/model availability must be verified with your own configured key. Prepared mode is fully functional without credentials.
 

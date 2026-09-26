@@ -198,16 +198,12 @@ scene.frame_set(1)
 result={'parts':len(meta),'meshes':sum(o.type=='MESH' for o in bpy.data.objects),'units':'metres','restFrame':1,'explodedFrame':180,'finalFrame':360,'manifest':meta}
 
 if 'artifacts' in globals():
-    scene.render.resolution_x=512;scene.render.resolution_y=420
-    for name,frame in [('assembled',1),('exploded',180)]:
-        scene.frame_set(frame)
-        camera.data.ortho_scale=1.5 if frame>1 else 1.02
-        aim(camera,(0,0,.34 if frame>1 else .20))
-        target=artifacts.file(name=name+'.png',media_type='image/png')
-        if hasattr(scene.render.image_settings,'media_type'):scene.render.image_settings.media_type='IMAGE'
-        scene.render.image_settings.file_format='PNG';scene.render.filepath=str(target.path)
-        bpy.ops.render.render(write_still=True);target.publish()
+    # Commit geometry first. Render separately so the cloud worker deadline is respected.
+    floor=bpy.data.objects.get('Studio floor')
+    if floor: bpy.data.objects.remove(floor,do_unlink=True)
+    scene.eevee.taa_render_samples=8
     scene.frame_set(1);camera.data.ortho_scale=1.5;aim(camera,(0,0,.34))
+    result['previewScript']='blender/higgsfield_preview.py'
 else:
     import argparse
     parser=argparse.ArgumentParser();parser.add_argument('--out',default='public/model');parser.add_argument('--renders',action='store_true')

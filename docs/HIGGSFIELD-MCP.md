@@ -15,7 +15,7 @@ Give the assistant `blender/build_scene.py` and this request:
 
 > Create a new 3D Jutsu project named Inside the Shot. Inspect its initial scene and use the returned revision and scene sequence as edit guards. Run the supplied Blender script in the managed scene. Preserve the fourteen semantic groups, metre units, portable materials and prepared animation. Wait for the operation to finish, inspect rendered assembled and exploded previews, then deliver the editable scene and exact committed revision. Do not claim the concept is a reconstruction of a real machine.
 
-The script detects the Jutsu `artifacts` registry and publishes assembled/exploded stills. Do not submit a second mutation while the first is active. Retrieve published previews and inspect their pixels before accepting a scene. Retrieve GLB/Blender outputs after the final committed edit. Signed download links expire; save the actual files.
+The build script detects the Jutsu `artifacts` registry and commits geometry first. Once it settles, run `blender/higgsfield_preview.py` through `scene_builder_3d_query_python` to publish a small exploded preview. This separation avoids a long render consuming the mutation worker's time limit. Do not submit a second mutation while the first is active. Retrieve the published preview and inspect its pixels before accepting a scene. Retrieve GLB/Blender outputs after the final committed edit. Signed download links expire; save the actual files.
 
 The managed cloud path does **not** need a local Blender add-on. This build also provides a normal `.blend` file that can be opened and edited in desktop Blender without any MCP server.
 

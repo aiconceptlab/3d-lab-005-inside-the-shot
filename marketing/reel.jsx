@@ -27,10 +27,10 @@ export default async ({project})=>{
     <text x={0} y={48} width={936} height={185} fontFamily="Montserrat" fontSize={tall?76:65} fontWeight={700} lineHeight={1.1} color={white} animate={entrance}>{s.title}</text>
    </frame>
    <text x={72} y={subY} width={936} height={65} fontFamily="Montserrat" fontSize={25} color={muted} animate={[{property:'opacity',keyframes:[{at:0,value:0},{at:.22,value:0},{at:.6,value:1},{at:s.dur-.4,value:1},{at:s.dur-.22,value:s.cta?1:0}]}]}>{s.sub}</text>
-   {s.blocked&&<frame x={112} y={tall?1110:805} width={856} height={245} layout="none" radius={12} background="#10191e" animate={[{property:'opacity',from:0,to:1,at:.4,duration:.4},{property:'offsetY',from:30,to:0,at:.4,duration:.6,easing:'house'},...textFade]}>
+   {s.blocked&&<frame x={112} y={tall?1110:805} width={856} height={245} layout="none" radius={12} background="#10191e" animate={[{property:'opacity',keyframes:[{at:0,value:0},{at:.4,value:0},{at:.8,value:1},{at:s.dur-.4,value:1},{at:s.dur-.22,value:0}]},{property:'offsetY',from:30,to:0,at:.4,duration:.6,easing:'house'}]}>
     <rect x={0} y={0} width={5} height={245} fill={accent}/>
     <text x={30} y={29} width={796} height={48} fontFamily="Montserrat" fontSize={30} fontWeight={700} color={accent}>REMOVAL BLOCKED</text>
-    <text x={30} y={93} width={796} height={120} fontFamily="Montserrat" fontSize={28} lineHeight={1.45} color={white}>Release fasteners. Open the enclosure.\nDisconnect the water lines. Then remove.</text>
+    <text x={30} y={93} width={796} height={120} fontFamily="Montserrat" fontSize={28} lineHeight={1.45} color={white}>{"Release fasteners. Open the enclosure.\nDisconnect the water lines. Then remove."}</text>
    </frame>}
    {s.cta&&<frame x={72} y={tall?1480:1103} width={936} height={105} layout="none" radius={12} background={accent} animate={[{property:'opacity',from:0,to:1,at:.4,duration:.5},{property:'offsetY',from:22,to:0,at:.4,duration:.6,easing:'house'}]}>
     <text x={24} y={30} width={888} height={62} fontFamily="Montserrat" fontSize={36} fontWeight={700} align="center" color="#10191e">Comment “CODE” to get the link →</text>
