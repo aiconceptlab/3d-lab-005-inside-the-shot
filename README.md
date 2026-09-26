@@ -23,6 +23,7 @@ Open **http://127.0.0.1:3018**. The included model and prepared command mode nee
 3. **Just show me the pump**: other parts become transparent; the explanation comes from the part catalogue.
 4. **Remove the pump first**: resets to the assembled model and demonstrates a blocked removal. Click the listed prerequisites in order, then remove the pump.
 5. **Assemble**: every part returns to its stored rest position.
+6. **Design studio**: choose copper, ivory/brass or midnight-blue finishes; adjust brightness without resetting the assembly. With live AI configured, describe a finish and lighting mood to generate a new look.
 
 Drag to orbit, scroll to zoom, click geometry or use the fourteen keyboard-accessible part buttons. Reduced-motion preferences shorten transitions and stop moving flow markers.
 
@@ -34,11 +35,31 @@ Copy `.env.example` to `.env`, set `OPENAI_API_KEY` and an available `OPENAI_MOD
 
 Prepared mode uses a small phrase router and is explicitly labelled. Live mode incurs API usage; no API key is shipped. Your question is sent to OpenAI only when live mode is selected. The server binds to loopback and checks host/origin. Add authentication, per-user limits and deployment hardening before hosting a paid API publicly.
 
+## AI finishes and lighting
+
+Open **Design studio** beside the viewer. The three clearly labelled presets work immediately. Try **Ivory gallery**, then explode the machine: the material changes remain attached to their original parts.
+
+To generate a new look, configure the same optional `.env` as live language mode and restart the server. Enter a brief such as:
+
+> Ivory ceramic enclosure, brushed champagne brass, a walnut handle and soft warm gallery lighting.
+
+**Generate with AI** sends only that brief to OpenAI. The model returns a complete, validated JSON recipe for four material roles and the studio lights. The browser applies color, metalness, roughness, clearcoat, key/fill/rim colors and intensities, key direction, environment intensity and exposure. It does not generate a new mesh, bitmap textures or images. Part identities and assembly rules remain intact.
+
+- Broad area lights produce realistic specular highlights; an aligned spotlight supplies shadows.
+- **Studio brightness** adjusts exposure. **Undo** restores the preceding look, including its brightness.
+- **Save** exports the current recipe as JSON; **Load** restores a saved recipe locally, without an API call.
+- Presets, imported looks and AI results have distinct labels. A failed or invalid generation leaves the current design intact.
+- AI design and manual interpretation share a server concurrency limit and throttle. Keys stay server-side; AI output cannot execute code or load URLs.
+
+![Material and lighting studio](marketing/design-studio-ivory.png)
+
+The included `.blend` remains the original editable scene. Browser look changes are saved as JSON recipes; they do not overwrite the Blender file or the original carousel/reel renders.
+
 ## What is included
 
 - Three.js viewer and Anime.js part animations
 - Fourteen semantic assemblies, dependency graph and explanatory part knowledge
-- Optional server-side language interpreter
+- Optional server-side language interpreter and AI material/lighting designer
 - Editable `public/model/arc.blend`, portable `arc.glb`, and reproducible Blender script
 - [Build instructions](BUILD.md) and [Higgsfield / MCP setup](docs/HIGGSFIELD-MCP.md)
 - Five 1080 × 1350 carousel images, caption, comment/DM templates and reel exports in `marketing/`
@@ -59,6 +80,6 @@ npm audit --registry=https://registry.npmjs.org
 
 See [QA notes](docs/QA.md) for the checks actually performed and the boundary of live API testing.
 
-The primary frontend bundle is approximately 180 KB gzipped, including Three.js; Vite reports a size advisory for the uncompressed 694 KB bundle. This POC intentionally keeps the viewer in one bundle.
+The primary frontend bundle is approximately 289 KB gzipped, including Three.js; Vite reports a size advisory for the uncompressed 953 KB bundle (including area-light lookup tables). This POC intentionally keeps the viewer in one bundle.
 
 MIT-licensed code and original model. Third-party libraries and platform names retain their own licences and trademarks.

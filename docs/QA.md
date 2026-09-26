@@ -25,3 +25,13 @@ The marketing package uses actual rendered geometry, not unrelated concept image
 The optional OpenAI interpreter is tested with HTTP fixtures, including invalid responses. A paid live OpenAI request is not part of these checks; account/model availability must be verified with your own configured key. Prepared mode is fully functional without credentials.
 
 This is not a physical machine validation. No fluid, thermal or collision simulation is claimed. The scene is an original educational concept and has not been manufactured.
+
+
+## Material / lighting update — 2026-09-26
+
+- Seventeen Node tests pass, including new schema bounds, GLB material-role matching, provider refusals/errors, incomplete responses, shared concurrency limits and disabled-without-key behavior.
+- Production build succeeds. Area-light lookup tables bring the main bundle to about 289 KB gzip; the Vite size advisory remains documented.
+- Browser checked at desktop and 390 × 844: three presets, brightness, Undo, JSON Load, assembled/exploded views, and preservation of finishes through assembly actions. No horizontal mobile overflow or browser warnings/errors in the checked run.
+- API-to-browser success and failure paths were exercised on a separate local fixture server. Valid settings reached the renderer; an injected failure preserved the last look. These were fixture tests, not live model generations.
+- **No OpenAI key is configured in this project. A real paid AI design call has not been executed.** The UI clearly disables generation and explains setup; presets remain usable.
+- No Higgsfield image/video/3D generation credits were spent for this update. The cloud scene and original Blender/carousel/reel assets retain their original appearance; the update adds a runtime studio to the web app.

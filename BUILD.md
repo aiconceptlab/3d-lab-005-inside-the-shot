@@ -44,3 +44,16 @@ To change the object, edit the semantic `group(...)` definitions and child geome
 - [GPT-5.4 mini model](https://developers.openai.com/api/docs/models/gpt-5.4-mini): optional API model example; access depends on your account
 
 Dependencies are pinned in `package-lock.json`. Platform availability and usage charges depend on the connected account.
+
+
+## Material and lighting studio
+
+- `src/look.mjs`: shared schema, bounded validation, presets and GLB material-role mapping.
+- `src/generate-look.mjs`: server-only OpenAI Responses integration. No key reaches Vite.
+- `src/design-ui.mjs`: AI prompt, preset comparison, undo and local JSON save/load.
+- `src/scene.mjs`: rectangular softboxes, shadow spotlight and physical materials. Changes preserve semantic part groups and the active assembly pose.
+- `POST /api/design`: accepts `{ "text": "Ivory ceramic, warm brass and gallery lighting" }`; returns a validated recipe. Uses the existing `OPENAI_API_KEY` and `OPENAI_MODEL`. Start with `npm start`, not Vite alone, for API routes.
+
+Only an explicit Generate action makes a paid API request. No Higgsfield generation is invoked for these runtime finish changes. The optional AI integration follows [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs). Area-light setup follows the installed Three.js `RectAreaLight` and `RectAreaLightUniformsLib` implementations; shadows use a separate spotlight because rectangular lights do not cast shadows in this renderer.
+
+The JSON recipe is a browser look, not a Blender project or mesh export. Existing Blender and Instagram assets retain their original art direction.
