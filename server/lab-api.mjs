@@ -46,6 +46,7 @@ export function createLabApi({live,analyzer=analyzeSources,builder=buildBlender,
   p=await readProject(id);
   if(active.has(id))return send(409,{error:'This project is already processing.'});
   if(action==='analyze'){
+   if(!p.pages.length)return send(400,{error:'Upload usable source pages before requesting analysis.'});
    if(p.analysis&&!body.retry)return send(200,publicProject(p));
    if(!live)return send(503,{error:'AI analysis needs OPENAI_API_KEY and a vision-capable model. Download the assistant package to use connected MCP tools instead.'});
    if(!body.budgetConfirmed)return send(400,{error:'Confirm the single paid analysis request first.'});

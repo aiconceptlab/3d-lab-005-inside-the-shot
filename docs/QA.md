@@ -24,3 +24,10 @@ Chair/fan inputs and scenes are original authored fixtures. They test portabilit
 Photo-only and knowledge-only outcomes have automated validation coverage. Live classification quality across arbitrary uploaded manuals remains a follow-up check requiring a configured vision model. PDF text extraction supports embedded text; scanned pages rely on vision rather than independent local OCR.
 
 The server is local and single-user. Worker timeouts and bounded schemas reduce accidental load; they do not make native PDF/Blender processing a hardened internet-facing sandbox.
+
+## Release checks
+
+- GitHub Actions passed the published implementation build, tests and dependency audit.
+- Gitleaks scanned the staged release and found no credentials. `.env`, uploads and private job/build storage are excluded from Git.
+- The actual uploaded fan project ZIP was opened and checked for scene/project metadata, original PDF, page images, GLB and editable Blender file.
+- Refreshed reel: 22.4 seconds, 30 fps, H.264 / yuv420p; 4:5 and 9:16 variants. Cover and five scene frames were visually inspected. The edit uses actual stills/screenshots; it is not a claim of live source reconstruction footage.
