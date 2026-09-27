@@ -10,7 +10,7 @@ Not enough visual detail? Keep the source knowledge, without inventing a detaile
 
 You can select parts, inspect citations and change finishes, specularity and studio lighting. With Blender configured, export an editable scene and GLB.
 
-The free source includes a chair, desk fan and the original coffee-machine demo. These are prepared examples—not a claim that AI recovered their geometry automatically.
+The free source includes a chair, desk fan and the original coffee-machine demo. These are prepared examples—not a claim that AI recovered their geometry automatically. The cover is AI-enhanced concept artwork; the other slides show the included models.
 
 For your own uploads: use the optional vision API, or prepare a scene with a connected assistant and import it. API/platform usage may cost credits. The prototype creates conceptual geometry, not engineering CAD or repair guidance.
 

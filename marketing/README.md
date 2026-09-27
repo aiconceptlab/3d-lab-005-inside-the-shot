@@ -6,7 +6,7 @@ Use the five numbered PNGs in **instagram-inside-anything-4x5/**. Each is exactl
 
 Copy **caption-inside-anything.txt**. The final slide asks viewers to comment **CODE** to get the link. Existing `comment-dm-templates.md` contains manual response templates. Nothing is posted or messaged automatically.
 
-The chair/fan imagery is rendered from the included original Blender models. App screenshots show the actual running upload-based implementation. Prepared examples and approximate geometry are identified in the copy; they are not presented as proven automatic image reconstructions.
+The refreshed cover uses AI-enhanced editorial artwork based on the original chair, labelled AI CONCEPT ARTWORK. Its richer walnut grain and upholstery are promotional art, not a screenshot of the app or a claim of generated mesh fidelity. The other chair/fan imagery is rendered from the included original Blender models. App screenshots show the actual running upload-based implementation. Prepared examples and approximate geometry are identified in the copy; they are not presented as proven automatic image reconstructions.
 
 `npm run instagram` reproduces this carousel. Keep the full 4:5 frame on upload so the AI Concept Lab header remains visible.
 
