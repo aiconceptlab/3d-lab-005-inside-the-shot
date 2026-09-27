@@ -16,7 +16,7 @@ test('design endpoint validates data, shares concurrency limits and never expose
  await new Promise(r=>server.listen(3100,'127.0.0.1',r));const base='http://127.0.0.1:3100';
  const post=text=>fetch(base+'/api/design',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
  try{
-  assert.deepEqual(await(await fetch(base+'/api/config')).json(),{live:true,design:true});
+  assert.deepEqual(await(await fetch(base+'/api/config')).json(),{live:true,design:true,analysis:true,blender:!!process.env.BLENDER_PATH});
   assert.equal((await post('')).status,400);assert.equal((await post('x'.repeat(1201))).status,400);
   assert.equal((await fetch(base+'/api/design',{method:'POST',headers:{Origin:'https://example.com','Content-Type':'application/json'},body:'{"text":"ivory"}'})).status,403);
   const first=post('Ivory ceramic');await pending;

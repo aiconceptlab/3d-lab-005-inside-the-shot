@@ -1,0 +1,1038 @@
+{
+  "title": "BREEZE / Desk fan",
+  "summary": "An original desk-fan assembly study with separate guards, rotor and support. The manual names the visible assemblies; operation and airflow are not simulated.",
+  "mode": "assembly",
+  "scaleBasis": "approximate",
+  "limitations": [
+    "Original sample product; no electrical or airflow specifications.",
+    "Guard, motor and rotor geometry is schematic. This is not a repair guide."
+  ],
+  "parts": [
+    {
+      "id": "base",
+      "label": "Weighted base",
+      "description": "A low circular base supports the fan.",
+      "aliases": [
+        "weighted base"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Weighted base"
+        }
+      ],
+      "anchored": true,
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.025,
+            0
+          ],
+          "size": [
+            0.27,
+            0.05,
+            0.22
+          ],
+          "role": "body",
+          "color": "#234b56",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "stand",
+      "label": "Support stem",
+      "description": "The support stem joins the base to the head.",
+      "aliases": [
+        "support stem"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Support stem"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0,
+        0.12,
+        -0.24
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.2,
+            -0.015
+          ],
+          "size": [
+            0.04,
+            0.31,
+            0.04
+          ],
+          "role": "metal",
+          "color": "#b2c3c9",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "box",
+          "position": [
+            0,
+            0.34,
+            -0.04
+          ],
+          "size": [
+            0.07,
+            0.07,
+            0.09
+          ],
+          "role": "body",
+          "color": "#234b56",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "motor",
+      "label": "Motor housing",
+      "description": "The rear housing is represented by a rounded exterior body. Hidden motor internals are not modelled.",
+      "aliases": [
+        "motor housing"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Motor housing"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0,
+        0.08,
+        -0.32
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.045
+          ],
+          "size": [
+            0.12,
+            0.135,
+            0.12
+          ],
+          "role": "body",
+          "color": "#234b56",
+          "rotation": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "rear_guard",
+      "label": "Rear guard",
+      "description": "A ring and wire pattern represents the rear guard.",
+      "aliases": [
+        "rear guard"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Rear guard"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        -0.27,
+        0,
+        -0.2
+      ],
+      "elements": [
+        {
+          "shape": "torus",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.34,
+            0.34,
+            0.02
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "torus",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.23,
+            0.23,
+            0.02
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "torus",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.12,
+            0.12,
+            0.02
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0.2617993877991494
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0.5235987755982988
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0.7853981633974483
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.0471975511965976
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.3089969389957472
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.832595714594046
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.0943951023931953
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.356194490192345
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.6179938779914944
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            -0.04
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.8797932657906435
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        }
+      ]
+    },
+    {
+      "id": "rotor",
+      "label": "Rotor and hub",
+      "description": "Three blades attach to a central hub. This is a static conceptual rotor.",
+      "aliases": [
+        "rotor and hub"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Rotor and hub"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0,
+        0,
+        0.24
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.035
+          ],
+          "size": [
+            0.065,
+            0.035,
+            0.065
+          ],
+          "role": "accent",
+          "color": "#d59c6d",
+          "rotation": [
+            1.5707963267948966,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        },
+        {
+          "shape": "sphere",
+          "position": [
+            0,
+            0.5549999999999999,
+            0.035
+          ],
+          "size": [
+            0.09,
+            0.2,
+            0.016
+          ],
+          "role": "body",
+          "color": "#537e88",
+          "rotation": [
+            0,
+            0,
+            -0.2
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        },
+        {
+          "shape": "sphere",
+          "position": [
+            0.05629165124598852,
+            0.4575,
+            0.035
+          ],
+          "size": [
+            0.09,
+            0.2,
+            0.016
+          ],
+          "role": "body",
+          "color": "#537e88",
+          "rotation": [
+            0,
+            0,
+            -2.2943951023931954
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        },
+        {
+          "shape": "sphere",
+          "position": [
+            -0.056291651245988505,
+            0.45749999999999996,
+            0.035
+          ],
+          "size": [
+            0.09,
+            0.2,
+            0.016
+          ],
+          "role": "body",
+          "color": "#537e88",
+          "rotation": [
+            0,
+            0,
+            -4.388790204786391
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "front_guard",
+      "label": "Front guard",
+      "description": "The front guard covers the blade area with a decorative wire pattern.",
+      "aliases": [
+        "front guard"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Front guard"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0.28,
+        0,
+        0.2
+      ],
+      "elements": [
+        {
+          "shape": "torus",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.34,
+            0.34,
+            0.02
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "torus",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.23,
+            0.23,
+            0.02
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "torus",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.12,
+            0.12,
+            0.02
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0.2617993877991494
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0.5235987755982988
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            0.7853981633974483
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.0471975511965976
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.3089969389957472
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            1.832595714594046
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.0943951023931953
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.356194490192345
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.6179938779914944
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        },
+        {
+          "shape": "cylinder",
+          "position": [
+            0,
+            0.49,
+            0.082
+          ],
+          "size": [
+            0.003,
+            0.335,
+            0.003
+          ],
+          "role": "metal",
+          "color": "#8298a1",
+          "rotation": [
+            0,
+            0,
+            2.8797932657906435
+          ],
+          "metalness": 0.85,
+          "roughness": 0.25
+        }
+      ]
+    },
+    {
+      "id": "dial",
+      "label": "Control dial",
+      "description": "A side-mounted dial is represented as an exterior control only.",
+      "aliases": [
+        "control dial"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Control dial"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0.25,
+        0.13,
+        0
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0.073,
+            0.49,
+            -0.055
+          ],
+          "size": [
+            0.035,
+            0.035,
+            0.035
+          ],
+          "role": "detail",
+          "color": "#172a30",
+          "rotation": [
+            0,
+            0,
+            1.5707963267948966
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    }
+  ]
+}

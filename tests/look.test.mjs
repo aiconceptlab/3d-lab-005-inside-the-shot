@@ -3,12 +3,12 @@ import {LOOKS,validateLook,finishRole} from '../src/look.mjs';
 import {generateLook} from '../src/generate-look.mjs';
 test('material roles match the actual GLB; every preset is a valid independent recipe',async()=>{
  const b=await fs.readFile(new URL('../public/model/arc.glb',import.meta.url));const glb=JSON.parse(b.subarray(20,20+b.readUInt32LE(12)).toString());
- assert.deepEqual(new Set(glb.materials.map(m=>finishRole(m.name)).filter(Boolean)),new Set(['shell','trim','copper','handle']));
+ assert.deepEqual(new Set(glb.materials.map(m=>finishRole(m.name)).filter(Boolean)),new Set(['body','metal','accent','detail']));
  assert.equal(finishRole('Dial ink'),null);assert.equal(finishRole('EPDM black rubber'),null);
- for(const recipe of Object.values(LOOKS)){const copy=validateLook(recipe);assert.deepEqual(copy,recipe);copy.finishes.shell.color='#000000';assert.notEqual(recipe.finishes.shell.color,copy.finishes.shell.color);}
+ for(const recipe of Object.values(LOOKS)){const copy=validateLook(recipe);assert.deepEqual(copy,recipe);copy.finishes.body.color='#000000';assert.notEqual(recipe.finishes.body.color,copy.finishes.body.color);}
 });
 test('untrusted recipes reject executable strings, extra fields, missing roles, NaN and unbounded lights',()=>{
- for(const mutate of [r=>r.finishes.shell.color='url(https://example.com)',r=>r.lighting.keyIntensity=99999,r=>r.lighting.exposure=NaN,r=>r.lighting.azimuth=-90,r=>r.finishes.trim.roughness=0,r=>r.script='alert(1)',r=>delete r.finishes.handle,r=>r.name='',r=>r.description='x'.repeat(241)]){
+ for(const mutate of [r=>r.finishes.body.color='url(https://example.com)',r=>r.lighting.keyIntensity=99999,r=>r.lighting.exposure=NaN,r=>r.lighting.azimuth=-90,r=>r.finishes.metal.roughness=0,r=>r.script='alert(1)',r=>delete r.finishes.detail,r=>r.name='',r=>r.description='x'.repeat(241)]){
   const recipe=structuredClone(LOOKS.ivory);mutate(recipe);assert.throws(()=>validateLook(recipe));
  }
 });

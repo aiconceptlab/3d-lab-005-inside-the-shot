@@ -1,0 +1,22 @@
+Your manual. Now in 3D.
+
+3D LAB // 005 has grown beyond one espresso machine.
+
+Inside Anything starts with a photo, an illustrated manual, or both. Review the source evidence, then explore an approximate 3D concept with named parts and page references.
+
+Photo only? Explore the exterior.
+Illustrated parts diagram? Build a conceptual assembly.
+Not enough visual detail? Keep the source knowledge, without inventing a detailed model.
+
+You can select parts, inspect citations and change finishes, specularity and studio lighting. With Blender configured, export an editable scene and GLB.
+
+The free source includes a chair, desk fan and the original coffee-machine demo. These are prepared examples—not a claim that AI recovered their geometry automatically.
+
+For your own uploads: use the optional vision API, or prepare a scene with a connected assistant and import it. API/platform usage may cost credits. The prototype creates conceptual geometry, not engineering CAD or repair guidance.
+
+Comment “CODE” and I’ll send the link.
+
+AI Concept Lab
+Testing AI ideas to find what’s worth building.
+
+#AIConceptLab #3DLab #Blender #Higgsfield #ProductDesign #AIPrototype #BuildInPublic

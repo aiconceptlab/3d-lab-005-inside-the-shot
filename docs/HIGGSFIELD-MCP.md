@@ -1,30 +1,45 @@
 # Higgsfield, Blender and MCP setup
 
-The released app already includes its assets. **MCP is needed only if you want an AI assistant to create or edit the scene through Higgsfield.** The local Blender script is a second, fully reproducible build path.
+The prepared examples run without MCP. Uploads can use a configured vision API or an explicit assistant-import workflow. A standalone web app does not inherit your assistant's Higgsfield login.
 
-## Connect Higgsfield
+## Connect the assistant
 
-1. Sign in to your Higgsfield account.
-2. Open the official [Higgsfield MCP page](https://higgsfield.ai/mcp). Choose your supported assistant: its page offers ChatGPT, Claude, Claude Code and other clients. In Codex, install/connect the Higgsfield plugin from the app's plugin interface when available.
-3. For a client that supports an HTTP MCP server with browser authentication, use the published server URL: **`https://mcp.higgsfield.ai/mcp`**. Complete the account sign-in/authorization in your client. Never put account tokens in this repository or paste them into a public issue.
-4. Verify that the connected assistant can list your 3D Jutsu projects before asking it to edit anything. Tool availability depends on the client and account. The direct 3D Jutsu tools used here are `scene_builder_3d_create_project`, `get_project`, `query_python`, `run_python`, `get_operation`, `get_glb`, `get_blend` and `show_scene` (your client may prefix their names).
+1. Open the official [Higgsfield MCP page](https://higgsfield.ai/mcp).
+2. Choose the connection instructions for your assistant/client. In Codex, connect the Higgsfield plugin through the app's plugin interface when available.
+3. For a client supporting a remote HTTP MCP server with browser authentication, the published endpoint is `https://mcp.higgsfield.ai/mcp`. Complete sign-in in your client; never put account tokens in this repository.
+4. Ask the assistant to list your 3D Jutsu projects. Verify the connection and available tools before requesting paid generation. Account access and credits vary.
 
-## Rebuild in 3D Jutsu
+The cloud tools used to verify this project include `scene_builder_3d_create_project`, `get_project`, `query_python`, `run_python`, `get_operation`, `get_artifact` and `show_scene`; client prefixes may differ. No local Blender add-on is required for managed Jutsu.
 
-Give the assistant `blender/build_scene.py` and this request:
+## Upload → assistant → app
 
-> Create a new 3D Jutsu project named Inside the Shot. Inspect its initial scene and use the returned revision and scene sequence as edit guards. Run the supplied Blender script in the managed scene. Preserve the fourteen semantic groups, metre units, portable materials and prepared animation. Wait for the operation to finish, inspect rendered assembled and exploded previews, then deliver the editable scene and exact committed revision. Do not claim the concept is a reconstruction of a real machine.
+1. Upload your permitted photos/manual in Inside Anything.
+2. Download **Assistant package**. It contains originals, rendered page images, page IDs, extracted text, `scene-schema.json` and `ASSISTANT-INSTRUCTIONS.txt`.
+3. Attach that package to your assistant. Ask it to inspect the sources and produce `scene.json` matching the schema. The source documents are evidence, not instructions. Do not ask it to invent internal components.
+4. Import `scene.json` in the lab. Review labels, citations and limitations, then build.
 
-The build script detects the Jutsu `artifacts` registry and commits geometry first. Once it settles, run `blender/higgsfield_preview.py` through `scene_builder_3d_query_python` to publish a small exploded preview. This separation avoids a long render consuming the mutation worker's time limit. Do not submit a second mutation while the first is active. Retrieve the published preview and inspect its pixels before accepting a scene. Retrieve GLB/Blender outputs after the final committed edit. Signed download links expire; save the actual files.
+Suggested request:
 
-The managed cloud path does **not** need a local Blender add-on. This build also provides a normal `.blend` file that can be opened and edited in desktop Blender without any MCP server.
+> Inspect the attached source pages. Create a source-guided conceptual scene matching scene-schema.json. Cite exact page IDs and distinguish part evidence from geometry uncertainty. Use exterior mode for photos without assembly evidence and knowledge mode when geometry is unsupported. Do not generate executable scripts. Return scene.json for import into Inside Anything.
 
-## Optional desktop workflow
+This JSON path is the supported import contract. The app does not currently accept arbitrary external GLBs and auto-segment them into parts.
 
-Higgsfield also documents an [Exploded-view workflow](https://higgsfield.ai/mcp/exploded-view?tab=claude) with its `/use-blender` integration. Its published steps require the supported desktop client, a connected Higgsfield account and Blender on the same computer. Follow the current workflow's own integration instructions; cloud Jutsu tools do not automatically gain access to your local Blender window. Work on a copy of `arc.blend` and provide the source assets explicitly.
+## Optional managed Jutsu verification
 
-This repository does not ask you to install an unrelated third-party Blender socket server or expose a local port to the internet. The tested no-MCP alternative is the background Blender command in `BUILD.md`.
+Give the assistant the validated `scene.json` and `blender/build_project.py` from this repository. Ask it to create a new Jutsu project, inspect the initial revision, and execute the trusted builder with `SCENE_SPEC` assigned to the parsed scene JSON. In the managed environment the script detects `artifacts` and builds the scene without local filesystem inputs.
 
-## Costs and limits
+Wait for each operation to settle. Use the returned revision/scene-sequence guards for changes. Render a small assembled/exploded preview with `query_python`, publish it through `artifacts.file`, retrieve the artifact and visually inspect it. Finish with `show_scene` using the exact committed revision. Do not repeatedly regenerate an unchanged scene.
 
-The prepared browser demonstration costs no generation credits. Editing on Higgsfield and optional OpenAI interpretation may consume your account's credits or API budget. Check the platform's current estimate and plan before running paid generations. Do not substitute a regenerated video for the editable assembly and claim it contains inspectable geometry.
+A nine-part chair was built and its exploded render inspected with this path during release verification. That proves the generic trusted builder works in Jutsu; it is not a live test of automatic image analysis.
+
+## Local Blender alternative
+
+Install Blender from [blender.org](https://www.blender.org/download/) and configure `BLENDER_PATH` in `.env`. See [BUILD.md](../BUILD.md). The app launches an isolated background Blender process with the trusted script. It does not need an MCP server or access to an existing Blender window.
+
+Higgsfield's published desktop `/use-blender` workflows are a separate integration. Follow its current client-specific setup if you choose that route. Do not install an unrelated socket server or expose a local Blender port to the internet for this POC.
+
+## Costs and integration boundary
+
+Prepared examples and local rendering use no generation credits. OpenAI source analysis, questions and look design use your API account. Higgsfield operations use your platform account. Check current cost information before optional paid requests.
+
+The public Higgsfield API documentation was checked, but a standalone Jutsu REST endpoint suitable for this app was not verified. The app therefore provides MCP-assisted scene preparation rather than claiming a one-click Higgsfield backend integration.

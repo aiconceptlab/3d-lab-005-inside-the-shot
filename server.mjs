@@ -2,17 +2,25 @@ import http from 'node:http';import fs from 'node:fs/promises';import path from 
 import {interpret} from './src/interpret.mjs';import {validateManifest} from './src/manual.mjs';
 import {generateLook} from './src/generate-look.mjs';
 import {validateLook} from './src/look.mjs';
+import {createLabApi} from './server/lab-api.mjs';
 const ROOT=import.meta.dirname;
-const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.svg':'image/svg+xml','.glb':'model/gltf-binary','.blend':'application/octet-stream'};
-export function createServer({port=Number(process.env.PORT||3018),ai=interpret,designer=generateLook,live=!!(process.env.OPENAI_API_KEY&&process.env.OPENAI_MODEL)}={}){
- let inFlight=false,lastRequest=0;
+const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.pdf':'application/pdf','.svg':'image/svg+xml','.glb':'model/gltf-binary','.blend':'application/octet-stream'};
+export function createServer({port=Number(process.env.PORT||3018),ai=interpret,designer=generateLook,live=!!(process.env.OPENAI_API_KEY&&process.env.OPENAI_MODEL),labOptions={}}={}){
+ let inFlight=false,lastRequest=0,lab;
  return http.createServer(async(req,res)=>{
   const send=(status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
   res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');
   if(!['localhost:'+port,'127.0.0.1:'+port].includes(req.headers.host)||req.headers.origin&&!['http://localhost:'+port,'http://127.0.0.1:'+port].includes(req.headers.origin))return send(403,{error:'Local access only.'});
   try{
    const pathname=new URL(req.url,'http://localhost').pathname;
-   if(req.method==='GET'&&pathname==='/api/config')return send(200,{live,design:live});
+   if(req.method==='GET'&&pathname==='/api/config')return send(200,{live,design:live,analysis:live,blender:!!process.env.BLENDER_PATH});
+   if(pathname.startsWith('/api/projects')||pathname.startsWith('/api/examples')){
+    lab??=createLabApi({live,...labOptions});
+    return await lab(req,res,pathname,{send,readJson:async limit=>{
+     if(!req.headers['content-type']?.startsWith('application/json'))throw Error('Use JSON.');
+     let bytes=0;const chunks=[];for await(const chunk of req){bytes+=chunk.length;if(bytes>limit)throw Error('Request too large.');chunks.push(chunk);}return JSON.parse(Buffer.concat(chunks).toString('utf8'));
+    }});
+   }
    if(req.method==='POST'&&['/api/interpret','/api/design'].includes(pathname)){
     if(!live)return send(503,{error:'Live mode is not configured.'});
     if(!req.headers['content-type']?.startsWith('application/json'))return send(415,{error:'Use JSON.'});
@@ -33,4 +41,4 @@ export function createServer({port=Number(process.env.PORT||3018),ai=interpret,d
   }catch(e){send(e.code==='ENOENT'?404:400,{error:e.code==='ENOENT'?'Not found.':e instanceof SyntaxError?'Invalid JSON.':e.message});}
  });
 }
-if(process.argv[1]===import.meta.filename){const port=Number(process.env.PORT||3018);createServer({port}).listen(port,'127.0.0.1',()=>console.log(`Inside the Shot: http://127.0.0.1:${port}`));}
+if(process.argv[1]===import.meta.filename){const port=Number(process.env.PORT||3018);createServer({port}).listen(port,'127.0.0.1',()=>console.log(`Inside Anything: http://127.0.0.1:${port}`));}

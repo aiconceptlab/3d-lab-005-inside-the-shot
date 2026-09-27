@@ -1,0 +1,470 @@
+{
+  "title": "FORM / Lounge chair",
+  "summary": "An original nine-part chair study. The accompanying illustrated manual identifies each assembly; the 3D dimensions and materials are a design concept.",
+  "mode": "assembly",
+  "scaleBasis": "approximate",
+  "limitations": [
+    "Original sample design, not a manufacturer product.",
+    "Part geometry and dimensions are illustrative. The reveal is not a validated assembly procedure."
+  ],
+  "parts": [
+    {
+      "id": "seat",
+      "label": "Seat frame",
+      "description": "The seat frame supports the cushion and connects the four legs.",
+      "aliases": [
+        "seat frame"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Seat frame"
+        }
+      ],
+      "anchored": true,
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "elements": [
+        {
+          "shape": "box",
+          "position": [
+            0,
+            0.43,
+            0
+          ],
+          "size": [
+            0.48,
+            0.07,
+            0.46
+          ],
+          "role": "body",
+          "color": "#b78754",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "cushion",
+      "label": "Seat cushion",
+      "description": "A separate upholstered cushion rests on the seat frame.",
+      "aliases": [
+        "seat cushion"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Seat cushion"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0,
+        0.24,
+        0
+      ],
+      "elements": [
+        {
+          "shape": "box",
+          "position": [
+            0,
+            0.49,
+            -0.01
+          ],
+          "size": [
+            0.445,
+            0.065,
+            0.425
+          ],
+          "role": "detail",
+          "color": "#d9dfd0",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "back",
+      "label": "Backrest",
+      "description": "A broad back panel is supported by two uprights.",
+      "aliases": [
+        "backrest"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Backrest"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0,
+        0.16,
+        -0.3
+      ],
+      "elements": [
+        {
+          "shape": "box",
+          "position": [
+            0,
+            0.73,
+            -0.19
+          ],
+          "size": [
+            0.47,
+            0.25,
+            0.047
+          ],
+          "role": "body",
+          "color": "#b78754",
+          "rotation": [
+            -0.09,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        },
+        {
+          "shape": "box",
+          "position": [
+            -0.18,
+            0.61,
+            -0.205
+          ],
+          "size": [
+            0.035,
+            0.27,
+            0.035
+          ],
+          "role": "body",
+          "color": "#b78754",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        },
+        {
+          "shape": "box",
+          "position": [
+            0.18,
+            0.61,
+            -0.205
+          ],
+          "size": [
+            0.035,
+            0.27,
+            0.035
+          ],
+          "role": "body",
+          "color": "#b78754",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "leg_0",
+      "label": "Rear left leg",
+      "description": "A tapered visual approximation of one independent supporting leg.",
+      "aliases": [
+        "rear left leg"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Rear left leg"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        -0.23,
+        -0.02,
+        -0.2
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            -0.185,
+            0.215,
+            -0.16
+          ],
+          "size": [
+            0.042,
+            0.43,
+            0.042
+          ],
+          "role": "body",
+          "color": "#94623a",
+          "rotation": [
+            -0.06,
+            0,
+            0.06
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "leg_1",
+      "label": "Front left leg",
+      "description": "A tapered visual approximation of one independent supporting leg.",
+      "aliases": [
+        "front left leg"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Front left leg"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        -0.23,
+        -0.02,
+        0.2
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            -0.185,
+            0.215,
+            0.16
+          ],
+          "size": [
+            0.042,
+            0.43,
+            0.042
+          ],
+          "role": "body",
+          "color": "#94623a",
+          "rotation": [
+            0.06,
+            0,
+            0.06
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "leg_2",
+      "label": "Rear right leg",
+      "description": "A tapered visual approximation of one independent supporting leg.",
+      "aliases": [
+        "rear right leg"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Rear right leg"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0.23,
+        -0.02,
+        -0.2
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0.185,
+            0.215,
+            -0.16
+          ],
+          "size": [
+            0.042,
+            0.43,
+            0.042
+          ],
+          "role": "body",
+          "color": "#94623a",
+          "rotation": [
+            -0.06,
+            0,
+            -0.06
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "leg_3",
+      "label": "Front right leg",
+      "description": "A tapered visual approximation of one independent supporting leg.",
+      "aliases": [
+        "front right leg"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Front right leg"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0.23,
+        -0.02,
+        0.2
+      ],
+      "elements": [
+        {
+          "shape": "cylinder",
+          "position": [
+            0.185,
+            0.215,
+            0.16
+          ],
+          "size": [
+            0.042,
+            0.43,
+            0.042
+          ],
+          "role": "body",
+          "color": "#94623a",
+          "rotation": [
+            0.06,
+            0,
+            -0.06
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "rail_left",
+      "label": "Left side rail",
+      "description": "A side rail links the left leg pair.",
+      "aliases": [
+        "left side rail"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Left side rail"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        -0.29,
+        0.05,
+        0
+      ],
+      "elements": [
+        {
+          "shape": "box",
+          "position": [
+            -0.185,
+            0.24,
+            0
+          ],
+          "size": [
+            0.027,
+            0.04,
+            0.33
+          ],
+          "role": "body",
+          "color": "#b78754",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    },
+    {
+      "id": "rail_right",
+      "label": "Right side rail",
+      "description": "A side rail links the right leg pair.",
+      "aliases": [
+        "right side rail"
+      ],
+      "evidence": "documented",
+      "geometryBasis": "source-guided",
+      "sources": [
+        {
+          "pageId": "source-1-p1",
+          "quote": "Right side rail"
+        }
+      ],
+      "anchored": false,
+      "offset": [
+        0.29,
+        0.05,
+        0
+      ],
+      "elements": [
+        {
+          "shape": "box",
+          "position": [
+            0.185,
+            0.24,
+            0
+          ],
+          "size": [
+            0.027,
+            0.04,
+            0.33
+          ],
+          "role": "body",
+          "color": "#b78754",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "metalness": 0.04,
+          "roughness": 0.38
+        }
+      ]
+    }
+  ]
+}

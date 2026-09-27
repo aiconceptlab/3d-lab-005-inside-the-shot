@@ -1,0 +1,20 @@
+[
+  {
+    "id": "source-1-p1",
+    "sourceId": "source-1",
+    "kind": "pdf",
+    "name": "fan-manual.pdf",
+    "page": 1,
+    "text": "AI CONCEPT LAB / ORIGINAL SAMPLE MANUAL  BREEZE / Desk fan  Concept visualization. Not a manufacturer specification or repair guide.   1  PARTS INDEX  01 Weighted base 02 Support stem 03 Motor housing 04 Rear guard 05 Rotor and hub 06 Front guard 07 Control dial  Weighted base  A low circular base supports the fan.  Support stem  The support stem joins the base to the head.  Motor housing  The rear housing is represented by a rounded exterior body. Hidden motor internals are not modelled.  Rear guard  A ring and wire pattern represents the rear guard.  Rotor and hub  Three blades attach to a central hub. This is a static conceptual rotor.  Front guard  The front guard covers the blade area with a decorative wire pattern.  Control dial  A side-mounted dial is represented as an exterior control only.",
+    "image": "source-1-p1.png"
+  },
+  {
+    "id": "source-1-p2",
+    "sourceId": "source-1",
+    "kind": "pdf",
+    "name": "fan-manual.pdf",
+    "page": 2,
+    "text": "AI CONCEPT LAB / ORIGINAL SAMPLE MANUAL  How the components fit  Concept visualization. Not a manufacturer specification or repair guide.   2  This illustration separates the named components for inspection. Positions, surface finishes and dimensions are a design concept. The order of movement is presentation staging, not a tested disassembly or assembly procedure.",
+    "image": "source-1-p2.png"
+  }
+]

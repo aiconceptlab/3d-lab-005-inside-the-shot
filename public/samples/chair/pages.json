@@ -1,0 +1,20 @@
+[
+  {
+    "id": "source-1-p1",
+    "sourceId": "source-1",
+    "kind": "pdf",
+    "name": "chair-manual.pdf",
+    "page": 1,
+    "text": "AI CONCEPT LAB / ORIGINAL SAMPLE MANUAL  FORM / Lounge chair  Concept visualization. Not a manufacturer specification or repair guide.   1  PARTS INDEX  01 Seat frame 02 Seat cushion 03 Backrest 04 Rear left leg 05 Front left leg 06 Rear right leg 07 Front right leg 08 Left side rail 09 Right side rail  Seat frame  The seat frame supports the cushion and connects the four legs.  Seat cushion  A separate upholstered cushion rests on the seat frame.  Backrest  A broad back panel is supported by two uprights.  Rear left leg  A tapered visual approximation of one independent supporting leg.  Front left leg  A tapered visual approximation of one independent supporting leg.  Rear right leg  A tapered visual approximation of one independent supporting leg.  Front right leg  A tapered visual approximation of one independent supporting leg.  Left side rail  A side rail links the left leg pair.  Right side rail  A side rail links the right leg pair.",
+    "image": "source-1-p1.png"
+  },
+  {
+    "id": "source-1-p2",
+    "sourceId": "source-1",
+    "kind": "pdf",
+    "name": "chair-manual.pdf",
+    "page": 2,
+    "text": "AI CONCEPT LAB / ORIGINAL SAMPLE MANUAL  How the components fit  Concept visualization. Not a manufacturer specification or repair guide.   2  This illustration separates the named components for inspection. Positions, surface finishes and dimensions are a design concept. The order of movement is presentation staging, not a tested disassembly or assembly procedure.",
+    "image": "source-1-p2.png"
+  }
+]

@@ -1,0 +1,7 @@
+* text=auto
+*.pdf binary
+*.blend binary
+*.glb binary
+*.png binary
+*.jpg binary
+*.mp4 binary

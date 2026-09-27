@@ -1,59 +1,69 @@
-# Build and extend
+# Build and extend Inside Anything
 
 ## Architecture
 
-`parts.json` is the shared contract: semantic ID, explanation, exploded offset in glTF coordinates and required removals. `manual.mjs` validates it and applies commands without mutating prior state. `scene.mjs` animates named GLB groups using those offsets. `main.mjs` connects UI, prepared commands and optional live interpretation.
+`server/store.mjs` stores a private project directory per UUID. `server/ingest-worker.mjs` validates image content and renders PDFs using PDF.js + a native canvas in a bounded worker. PNG page previews and extracted text become the shared evidence inventory.
 
-The `.blend` uses Blender Z-up metres. glTF and the browser use Y-up; offset conversion is `(x, z, -y)`. The GLB exports in the rest pose. Browser controls animate positions; the editable Blender file additionally includes a 360-frame / 30 fps assembly animation.
+`server/vision.mjs` submits those pages to OpenAI Responses with a strict schema, or writes the instructions included in an assistant package. `src/project.mjs` independently validates part IDs, evidence references, quotes, numeric bounds, primitive counts and material roles. Scene JSON cannot supply executable code, URLs or filesystem paths.
 
-## Rebuild the actual model
+`server/lab-api.mjs` owns the asynchronous analysis/build lifecycle. A persisted job records status and source-analysis attempts. One source provider call runs at a time; retry is explicit and bounded. On restart, interrupted jobs return to review/uploaded status without another API call. Uploads are retained on failure.
 
-Install Blender from https://www.blender.org/download/ (verified locally with 4.5.9 LTS; the cloud scene uses 5.2). Run from the repository root:
+`src/geometry.mjs` creates a browser preview from the scene. `blender/build_project.py` creates equivalent named parts, bevelled geometry, materials, animation and GLB/Blender exports. `server/build.mjs` launches only that trusted script. A failed/unconfigured Blender build leaves an explicit browser-preview path; it never substitutes the espresso-machine model.
+
+`src/scene.mjs` frames arbitrary project bounds, maps semantic parts to nodes, animates validated offsets, handles source materials and adds studio lighting. `src/main.mjs` connects upload, review, source citations and project persistence. `src/look.mjs` validates the four generic material roles (`body`, `metal`, `accent`, `detail`).
+
+## Local Blender build
+
+Install Blender from its official website. Tested locally with 4.5.9 LTS and in Higgsfield with Blender 5.2. From the repository root:
 
 ```sh
-blender --background --python blender/build_scene.py -- --out public/model --renders
+blender --background --factory-startup --disable-autoexec --python blender/build_project.py -- --scene public/samples/chair/scene.json --out public/samples/chair --renders
 ```
 
-PowerShell with an explicit installed executable:
+PowerShell executable paths with spaces need `& 'C:/path/to/blender.exe'` before the arguments. The command writes `model.glb`, `model.blend`, `assembled.png` and `exploded.png`. It operates in a fresh background process; it does not edit an already-open Blender window.
 
-```powershell
-& 'C:/Program Files/Blender Foundation/Blender 4.5/blender.exe' --background --python blender/build_scene.py -- --out public/model --renders
-```
+The schema uses metre units, Y up, front +Z. Blender conversion is `(x, -z, y)`. Parts share world coordinates and receive independent named parent groups. Frames 1 and 180 are assembled; frame 100 shows the exploded hold. This animation is a conceptual presentation, not collision checking or safe repair guidance. GLB is exported assembled; browser controls apply the same offsets.
 
-Replace that example path with your own installation. The script creates a new scene in that background process and writes `arc.blend`, `arc.glb`, `parts.json`, `assembled.png` and `exploded.png`. It does not control or overwrite an already-open Blender window. Export applies bevel and weighted-normal modifiers so the browser geometry matches the rendered geometry. Authoring modifiers remain editable in the `.blend`.
+Add `BLENDER_PATH` in `.env` to enable the same builder from **Build this concept**. The local worker has a 90-second timeout and does not receive API keys in its environment. It is a constrained subprocess, not an operating-system security sandbox. Keep the app local.
 
-To change the object, edit the semantic `group(...)` definitions and child geometry in `build_scene.py`, regenerate both model and metadata, run tests, then rebuild the frontend. New group IDs must remain consistent across the GLB and the manifest. Keep dependency edges acyclic. The chassis remains fixed.
+## Author another fixture
 
-## Local development
+1. Produce scene JSON matching `SCENE_SCHEMA` in `src/project.mjs`.
+2. Each documented/visible part must reference an existing source page ID. Text quotes must occur on that page. Geometry confidence is separate from evidence confidence.
+3. Use no more than 24 parts and 240 total primitive elements; dimensions and transforms are bounded. The AI prompt asks for a smaller 18-part/100-element target.
+4. Validate with `validateScene(scene, pages)` before passing it to the builder. Do not execute AI-generated scripts.
+5. Inspect assembled and exploded renders. Check labels, silhouettes, separation, materials and rest positions.
 
-`npm run dev` runs Vite for prepared-mode frontend changes. Use `npm run build && npm start` to test the complete server and optional language endpoint. `/api/config` exposes only whether live interpretation is configured. No credentials enter the frontend bundle.
+`node scripts/create-examples.mjs` regenerates the authored chair/fan specs. After rebuilding their renders, `python scripts/create-manuals.py` regenerates the original PDFs (requires ReportLab). Sample page PNGs/text are produced through the same ingestion worker as uploads. These manuals describe original concepts; do not relabel them as manufacturer documents or automated vision results.
 
-## Reproduce marketing
+## API overview
 
-`npm run instagram` lays out the five PNGs at exactly 1080 × 1350 using actual renders. See `marketing/README.md` for the Blender footage and native Higgsedit composition. Keep every carousel slide at the same 4:5 ratio. Use the supplied 9:16 reel for full-screen playback or the 4:5 variant for the feed.
+- `GET /api/config`, `GET /api/examples`, `POST /api/examples/:slug`
+- `GET/POST /api/projects` (upload uses JSON files with name + base64 data)
+- `GET /api/projects/:id`
+- `POST /api/projects/:id/analyze` with `budgetConfirmed: true`
+- `POST /api/projects/:id/import-scene` with `{scene}`
+- `POST /api/projects/:id/review` with `{title, parts:[{id,label}]}`
+- `POST /api/projects/:id/build`
+- `POST /api/projects/:id/ask` with `{text}`
+- `GET /api/projects/:id/export` or `/assistant-package`
+- `POST /api/design` with `{text}` for a bounded finish/light recipe
 
-## Official references checked for this build
+Poll a project's status after a 202 response. The UI does this automatically. Existing analysis is cached per project; `retry:true` deliberately requests another analysis and consumes its call budget. The current UI offers import/review rather than an automatic regenerate loop.
 
-- [Higgsfield 3D Jutsu](https://higgsfield.ai/blog/higgsfield-3d-jutsu): editable scenes and exports
-- [Higgsfield MCP](https://higgsfield.ai/mcp): connection endpoint and workflows
-- [Exploded-view workflow](https://higgsfield.ai/mcp/exploded-view?tab=claude)
+## Development and checks
+
+Use `npm run build` then `npm start` for the complete app. Vite alone does not provide the project/API routes. `npm test` uses isolated temporary project storage and provider fixtures, never real credentials. `npm run check` runs tests and production build. The Three.js bundle is about 291 KB gzipped; the uncompressed-size advisory is expected for this local POC.
+
+## Official integration references
+
+Checked 2026-09-27:
+
+- [Higgsfield MCP](https://higgsfield.ai/mcp) — published connection endpoint and Blender workflows
+- [Higgsfield API docs](https://docs.higgsfield.ai/docs) — no standalone Jutsu endpoint verified for this release
+- [OpenAI vision](https://developers.openai.com/api/docs/guides/images-vision) — rendered source pages as image inputs
+- [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs) — strict scene/answer schemas
+- [PDF.js Node rendering example](https://github.com/mozilla/pdf.js/blob/master/examples/node/pdf2png/pdf2png.mjs)
 - [Three.js GLTFLoader](https://threejs.org/docs/pages/GLTFLoader.html)
-- [Three.js RoomEnvironment](https://threejs.org/docs/pages/RoomEnvironment.html)
-- [Anime.js animation](https://animejs.com/documentation/animation/)
-- [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs)
-- [GPT-5.4 mini model](https://developers.openai.com/api/docs/models/gpt-5.4-mini): optional API model example; access depends on your account
 
-Dependencies are pinned in `package-lock.json`. Platform availability and usage charges depend on the connected account.
-
-
-## Material and lighting studio
-
-- `src/look.mjs`: shared schema, bounded validation, presets and GLB material-role mapping.
-- `src/generate-look.mjs`: server-only OpenAI Responses integration. No key reaches Vite.
-- `src/design-ui.mjs`: AI prompt, preset comparison, undo and local JSON save/load.
-- `src/scene.mjs`: rectangular softboxes, shadow spotlight and physical materials. Changes preserve semantic part groups and the active assembly pose.
-- `POST /api/design`: accepts `{ "text": "Ivory ceramic, warm brass and gallery lighting" }`; returns a validated recipe. Uses the existing `OPENAI_API_KEY` and `OPENAI_MODEL`. Start with `npm start`, not Vite alone, for API routes.
-
-Only an explicit Generate action makes a paid API request. No Higgsfield generation is invoked for these runtime finish changes. The optional AI integration follows [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs). Area-light setup follows the installed Three.js `RectAreaLight` and `RectAreaLightUniformsLib` implementations; shadows use a separate spotlight because rectangular lights do not cast shadows in this renderer.
-
-The JSON recipe is a browser look, not a Blender project or mesh export. Existing Blender and Instagram assets retain their original art direction.
+PDF.js needs its packaged standard fonts, CMaps and WASM directory. The worker resolves them from the installed package; omitting standard fonts breaks some PDF text rendering.

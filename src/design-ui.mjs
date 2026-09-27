@@ -1,6 +1,6 @@
 import {LOOKS,validateLook} from './look.mjs';
 export function mountDesignStudio(scene){
- const $=s=>document.querySelector(s);let current={look:scene.getLook(),origin:'PREPARED PRESET',preset:'studio'},history=[],ready=false,busy=false;
+ const $=s=>document.querySelector(s);let current={look:scene.getLook(),origin:'SOURCE PALETTE',preset:null},history=[],ready=false,busy=false;
  for(const name of ['manual','design'])$('#'+name+'-tab').addEventListener('click',()=>{
   $('#manual-panel').hidden=name!=='manual';$('#look-panel').hidden=name!=='design';
   $('#manual-tab').setAttribute('aria-expanded',String(name==='manual'));$('#design-tab').setAttribute('aria-expanded',String(name==='design'));
@@ -15,7 +15,7 @@ export function mountDesignStudio(scene){
   look=validateLook(look);history.push({...current,look:scene.getLook()});if(history.length>12)history.shift();
   scene.setBrightness(1);scene.setLook(look);$('#brightness').value='100';$('#brightness-value').textContent='100%';current={look,origin,preset};render();
  }
- document.querySelectorAll('[data-look]').forEach(b=>b.addEventListener('click',()=>{if(busy)return;apply(LOOKS[b.dataset.look],'PREPARED PRESET',b.dataset.look);$('#design-status').textContent='Preset applied. Orbit or explode the machine to inspect the finish.';}));
+ document.querySelectorAll('[data-look]').forEach(b=>b.addEventListener('click',()=>{if(busy)return;apply(LOOKS[b.dataset.look],'PREPARED PRESET',b.dataset.look);$('#design-status').textContent='Preset applied. Orbit or explode the object to inspect the finish.';}));
  $('#brightness').addEventListener('input',e=>{scene.setBrightness(Number(e.target.value)/100);$('#brightness-value').textContent=e.target.value+'%';});
  $('#undo-look').addEventListener('click',()=>{if(!history.length||busy)return;current=history.pop();scene.setBrightness(1);scene.setLook(current.look);$('#brightness').value='100';$('#brightness-value').textContent='100%';$('#design-status').textContent='Previous look restored.';render();});
  $('#design-form').addEventListener('submit',async e=>{
@@ -24,7 +24,7 @@ export function mountDesignStudio(scene){
   catch(e){$('#design-status').textContent=e.name==='TimeoutError'?'Request timed out. Your current look is unchanged.':e.message;}
   finally{busy=false;render();}
  });
- $('#export-look').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:1,origin:current.origin,look:scene.getLook()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='arc-studio-look.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+ $('#export-look').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:1,origin:current.origin,look:scene.getLook()},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='product-studio-look.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
  $('#import-look').addEventListener('click',()=>{if(!busy)$('#look-file').click();});
  $('#look-file').addEventListener('change',async e=>{
   const file=e.target.files[0];if(!file||busy)return;
